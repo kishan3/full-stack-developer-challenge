@@ -2,6 +2,7 @@
 from collections import OrderedDict
 
 from rest_framework import viewsets, mixins, status, permissions
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView as BaseTokenObtainPairView
@@ -43,3 +44,9 @@ class UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
             ('password', request.data['password'])
         ]))
         return Response(result, status=status.HTTP_201_CREATED, headers=headers)
+
+    @action(methods=['GET'], detail=True, url_path="me", url_name="me")
+    def me(self, request):
+        instance = User.objects.get(id=request.user.id)
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
