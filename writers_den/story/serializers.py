@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from writers_den.story.models import Story
+from .models import Story
 
 
 class StorySerializer(serializers.ModelSerializer):

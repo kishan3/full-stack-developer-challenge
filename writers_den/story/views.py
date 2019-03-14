@@ -1,8 +1,8 @@
 # Create your views here.
 from rest_framework import viewsets
 
-from writers_den.story.models import Story
-from writers_den.story.serializers import StorySerializer
+from .models import Story
+from .serializers import StorySerializer
 
 
 class StoryViewSet(viewsets.ModelViewSet):
