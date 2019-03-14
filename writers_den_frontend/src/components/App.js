@@ -4,6 +4,8 @@ import './App.css'
 import Login from './Login'
 import Signup from './Signup'
 import Dashboard from './Dashboard'
+import StoryPage from './StoryPage'
+import NewStory from './NewStory'
 
 
 class App extends Component {
@@ -13,6 +15,8 @@ class App extends Component {
         <div className="App">
           <Route path="/" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
+          <Route path="/story/:id" exact component={StoryPage} />
+          <Route path="/new" exact component={NewStory} />
           <Route path="/dashboard" exact component={Dashboard} />
         </div>
       </Router>

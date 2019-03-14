@@ -58,14 +58,26 @@ export const getStories = (access_token) =>
 	.then(data => data)
 
 
-export const createStory = (access_token, content, impact, ease, confidence ) =>
+export const getStory = (access_token, story_id) =>
+	fetch(`${api}/story/${story_id}`, {
+		method: 'GET',
+		headers: {
+			...headers,
+			Authorization: `JWT ${access_token}`
+		}
+	})
+	.then(res => res.json())
+	.then(data => data)
+
+
+export const createStory = (access_token, title, text) =>
 	fetch(`${api}/story/`, {
 		method: 'POST',
 		headers: {
 			...headers,
 			Authorization: `JWT ${access_token}`
 		},
-		body: JSON.stringify({"impact": impact, "ease": ease,"content": content, "confidence": confidence})
+		body: JSON.stringify({"title": title, "text": text})
 	})
 	.then(res => res.json())
 	.then(data => data)

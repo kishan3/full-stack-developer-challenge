@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import * as Api from '../utils/api'
 import { Redirect } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
-import AddCircle from '@material-ui/icons/AddCircle'
+import { Link } from 'react-router-dom'
 
 import Button from '@material-ui/core/Button'
+import Story from './Story'
 
 
 class Dashboard extends Component {
@@ -63,15 +64,20 @@ class Dashboard extends Component {
                     <Grid item xs={1}>
                         <Button variant="contained" onClick={this.handleLogout}>LOGOUT</Button>
                     </Grid>
-
-                    <Grid item sm={8}>
+                    <Grid item sm={1}>
                     </Grid>
-                    <Grid item sm={4}>
+                    <Grid item sm={10}>
+                        {stories.map((story) => (
+                            <Story key={story.id} story={story} />
+                        ))}
+                    </Grid>
+                    <Grid item sm={1}>
                         <div>
-                            <Button aria-label="Add" onClick={this.handleClickOpen}>
-                                <AddCircle style={{ fontSize: 60, color: 'black' }}/>
-                                {/* <img alt="Add Idea" src={AddCircle} /> */}
-                            </Button>
+                            <Link to="/new">
+                                <Button aria-label="Add">
+                                    Create New Story
+                                </Button>
+                            </Link>
                         </div>
                     </Grid>
                 </Grid>
