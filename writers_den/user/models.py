@@ -70,5 +70,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     def is_admin(self):
         return self.is_staff or self.is_superuser
 
+    def __str__(self):
+        return self.name
+
 
 User._meta.get_field('password').blank = True

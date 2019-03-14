@@ -54,8 +54,6 @@ class NewStory extends Component {
         if (toHome) {
             return <Redirect to="/" />
         }
-
-        const tweetLeft = 280 - text.length
         return (
             <div>
                 <h3 className="center">
